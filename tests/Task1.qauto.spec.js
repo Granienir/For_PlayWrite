@@ -12,7 +12,7 @@ test.describe("Registration modal validation", async () => {
     //await registerForm.registFormOpen();
   });
 
-  test.only("All fields fill in correctly", async ({ page }) => {
+  test("All fields fill in correctly", async ({ page }) => {
     const registerForm = new RegisterForm(page);
     const registerFormNew = await registerForm.registFormOpen();
     await registerFormNew._firstNameInput.focus();
