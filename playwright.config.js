@@ -11,9 +11,10 @@ require("dotenv").config(/*{ path: path.resolve(__dirname, ".env") }*/);
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: "./tests",
+  testDir: "./tests/fixture",
+  testMatch: "**.spec.js",
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -29,22 +30,37 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+    headless: false,
+    baseURL: process.env.BASE_URL,
+    httpCredentials: {
+      username: process.env.USER_NAME,
+      password: process.env.USER_PASS,
+    },
+    globalSetup: "global-setup.ts",
   },
 
   /* Configure projects for major browsers */
   //
   projects: [
     {
+      name: "login",
+      testDir: "./tests/setup",
+      testMatch: "login.setup.js",
+    },
+    {
       name: "qauto",
-      testMatch: "**.qauto.spec.js",
+      testDir: "./tests/storage",
+      testMatch: "**.spec.js",
       use: {
-        headless: false,
-        baseURL: process.env.BASE_URL,
-        httpCredentials: {
-          username: process.env.USER_NAME,
-          password: process.env.USER_PASS,
-        },
+        storageState: "session-storage.json",
       },
+      dependencies: ["login"],
+    },
+    {
+      name: "fixtures",
+      testDir: "./tests/fixture",
+      testMatch: "fixtures.spec.js",
+      dependencies: ["login"],
     },
     // {
     //   name: "chromium",
