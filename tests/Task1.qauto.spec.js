@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { HomePage } from "../src/pages/HomePage";
-import { RegisterForm } from "../src/pages/RegisterForm";
+import { HomePage } from "../src/components/pages/HomePage";
+import { RegisterForm } from "../src/components/pages/RegisterForm";
 
 test.describe("Registration modal validation", async () => {
   test.beforeEach(async ({ page }) => {
