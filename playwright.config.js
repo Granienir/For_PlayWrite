@@ -11,7 +11,7 @@ require("dotenv").config(/*{ path: path.resolve(__dirname, ".env") }*/);
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: "./tests/fixture",
+  testDir: "./tests",
   testMatch: "**.spec.js",
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -60,6 +60,12 @@ module.exports = defineConfig({
       name: "fixtures",
       testDir: "./tests/fixture",
       testMatch: "fixtures.spec.js",
+      dependencies: ["login"],
+    },
+    {
+      name: "api",
+      testDir: "./tests/api",
+      testMatch: "api.spec.js",
       dependencies: ["login"],
     },
     // {
