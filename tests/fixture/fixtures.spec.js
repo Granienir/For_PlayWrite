@@ -18,6 +18,12 @@ test("add a car", async ({ storagePage }) => {
   // await addCarModelSelect.selectOption("911");
   // await mileageInput.fill("123456");
   // await addBtn.click();
+  storagePage.on("request", (request) =>
+    console.log(">>", request.method(), request.url())
+  );
+  storagePage.on("response", (response) =>
+    console.log("<<", response.status(), response.url())
+  );
 
   const garagePage = new GaragePage(storagePage);
   await garagePage.navigate();
