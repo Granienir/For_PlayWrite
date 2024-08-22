@@ -147,7 +147,7 @@ test.describe("apiTests", () => {
       },
     });
     const body = await response.json();
-    console.log(body);
+    //console.log(body);
     expect(body.data.brand).toEqual("Audi");
   });
 
@@ -160,7 +160,7 @@ test.describe("apiTests", () => {
       },
     });
     const body = await response.json();
-    console.log(body);
+    //console.log(body);
     expect(body.message).toEqual("Invalid mileage type");
   });
 
@@ -173,17 +173,17 @@ test.describe("apiTests", () => {
       },
     });
     const body = await response.json();
-    console.log(body);
+    //console.log(body);
     expect(body.message).toEqual("Brand not found");
   });
 
-  test.afterAll("Delete all user cars", async ({ request }) => {
+  test("Delete all user cars", async ({ request }) => {
     const response = await request.get("/api/cars");
     const cars = await response.json();
     const carsData = cars.data;
     //console.log(carsData);
     const carsId = carsData.map((id) => id.id);
-    console.log(carsId);
+    //console.log(carsId);
     for (const carId of carsId) {
       const res = await request.delete(`/api/cars/${carId}`);
     }
