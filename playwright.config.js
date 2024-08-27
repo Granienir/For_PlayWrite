@@ -30,7 +30,7 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
-    headless: false,
+    headless: true,
     baseURL: process.env.BASE_URL,
     httpCredentials: {
       username: process.env.USER_NAME,
@@ -68,6 +68,11 @@ module.exports = defineConfig({
       testMatch: "api.spec.js",
       dependencies: ["login"],
     },
+    // {
+    //   name: "all_other",
+    //   testDir: "./tests",
+    //   testMatch: "**.spec.js",
+    // },
     // {
     //   name: "chromium",
     //   use: { ...devices["Desktop Chrome"] },

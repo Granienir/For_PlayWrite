@@ -18,7 +18,7 @@ test.describe("Check storage", async () => {
     const garagePage = new GaragePage(page);
     await garagePage.navigate();
     await garagePage.addCar("Porsche", "911", 123456);
-    await page.pause();
+    //await page.pause();
 
     // await garagePage.addCarBtn.click();
     // await garagePage.selectBrand("Porsche");
