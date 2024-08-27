@@ -21,5 +21,5 @@ test("has title", { tag: "@regression" }, async ({ page }) => {
 
   await expect(page.getByText("Email is incorrect")).toBeVisible();
 
-  await page.pause();
+  //await page.pause();
 });

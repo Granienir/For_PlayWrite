@@ -29,5 +29,5 @@ test("add a car", async ({ storagePage }) => {
   await garagePage.navigate();
   await garagePage.addCar("Porsche", "911", 123456);
 
-  await storagePage.pause();
+  //await storagePage.pause();
 });
